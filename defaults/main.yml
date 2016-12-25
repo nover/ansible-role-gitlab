@@ -1,0 +1,38 @@
+---
+# defaults file for gitlab
+##
+# Email settings
+gitlab_email_from: 'gitlab@example.com'
+gitlab_email_display_name: 'Gitlab example.com'
+gitlab_email_enabled: 'true'
+gitlab_support_email: 'gitlab@example.com'
+
+##
+# Gitlab general stuff
+gitlab_ssh_host: 'gitlab.example.com'
+gitlab_time_zone: 'Europe/Copenhagen'
+
+##
+# Gitlab primary NGINX
+gitlab_nginx_external_url: 'https://gitlab.example.com'
+gitlab_nginx_ssl_enable: true
+gitlab_nginx_redirect_http_to_https: 'true'
+gitlab_nginx_ssl_certificate: '/etc/letsencrypt/live/gitlab.example.com/fullchain.pem'
+gitlab_nginx_ssl_certificate_key: '/etc/letsencrypt/live/gitlab.example.com/privkey.pem'
+gitlab_nginx_custom_server_config: 'location ^~ /.well-known {\n alias /var/www/letsencrypt/.well-known;\n}\n'
+
+##
+# Gitlab registry NGINX
+gitlab_registry_nginx_external_url: 'https://registry.example.com'
+gitlab_registry_nginx_ssl_enable: true
+gitlab_registry_nginx_redirect_http_to_https: 'true'
+gitlab_registry_nginx_ssl_certificate: '/etc/letsencrypt/live/registry.example.com/fullchain.pem'
+gitlab_registry_nginx_ssl_certificate_key: '/etc/letsencrypt/live/registry.example.com/privkey.pem'
+gitlab_registry_nginx_custom_server_config: 'location ^~ /.well-known {\n alias /var/www/letsencrypt/.well-known;\n}\n'
+
+##
+# Backup settings
+gitlab_backup_path: '/var/opt/gitlab/backups'
+gitlab_backup_manage_path: 'true'
+gitlab_backup_archive_permission: '0644'
+gitlab_backup_keep_time: 302400
