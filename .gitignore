@@ -9,3 +9,5 @@
 *.orig
 *.retry
 .DS_Store
+
+ansible.cfg
