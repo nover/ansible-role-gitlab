@@ -2,6 +2,7 @@
 # tasks file for gitlab
 - name: Install dependencies for gitlab
   apt: name={{item}} state=present
+  become: true
   with_items:
     - curl
     - openssh-server
@@ -22,8 +23,10 @@
 
 - name: Install gitlab-ce
   apt: name=gitlab-ce state=present
+  become: true
 
 - name: Place gitlab.rb config file
+  become: true
   template:
     src: gitlab.rb.j2
     dest: /etc/gitlab/gitlab.rb
@@ -31,9 +34,11 @@
     mode: '0600'
 
 - name: Reconfigure gitlab
+  become: true
   command: /usr/bin/gitlab-ctl reconfigure
 
 - name: Place cron.d file for regular backups
+  become: true
   template:
     src: cron.j2
     dest: /etc/cron.d/gitlab
