@@ -9,4 +9,4 @@
 # * * * * * command to be executed
 
 # Run gitlab backup task each morning at 0500 (5 AM)
-0 5 * * * /usr/bin/gitlab-rake gitlab:backup:create CRON=1
+0 5 * * * root /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1
